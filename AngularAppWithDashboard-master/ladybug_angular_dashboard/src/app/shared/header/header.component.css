@@ -1,0 +1,21 @@
+.mb-4,
+.my-4 {
+    margin-bottom: 0rem!important;
+}
+
+.nav_bar {
+    background-color: #2d2c3b !important;
+      
+}
+
+.navbar_div {
+    margin-left: 2vh !important;
+
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255, 255, 255);
+}
+
+a{
+    cursor: pointer;
+}

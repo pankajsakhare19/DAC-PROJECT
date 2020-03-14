@@ -1,0 +1,53 @@
+/* @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(
+  https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300
+); */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #fff;
+  font-family: Arial;
+  font-size: 12px;
+}
+
+.body {
+  position: fixed;
+  top: 40px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  background-image: url(../../assets/authimg.jpg);
+  /* http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg */
+  background-size: cover;
+  filter: blur(0px);
+  -webkit-filter: blur(5px);
+  z-index: 0;
+}
+
+.header {
+  position: absolute;
+  top: calc(58% - 35px);
+  left: calc(44% - 255px);
+  z-index: 2;
+}
+
+.header div {
+  float: left;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 40px;
+  font-weight: 200;
+}
+
+.header div span {
+  /* color: #5379fa !important; */
+  color: rgb(76, 36, 116);
+}
+
+.card {
+  background: transparent;
+}

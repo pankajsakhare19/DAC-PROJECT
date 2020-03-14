@@ -1,0 +1,56 @@
+<nav
+  class="navbar sticky-top navbar-dark mb-4 navbar-expand bg-dark nav_bar"
+  style="position: fixed; top: 0; width: 100%;"
+>
+  <div class="container-fluid navbar_div">
+    <a
+      [routerLink]="['/']"
+      routerLinkActive="router-link-active"
+      class="navbar-brand"
+    >
+      <div class="row">
+        <div class="col-2">
+          <i class="fas fa-bug fa-2x"></i>
+        </div>
+        <div class="col-2" style="margin-top:1vh; margin-left: 2vh;">
+          <span style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+            >LadyBug - Bug Tracking System</span
+          >
+        </div>
+      </div>
+    </a>
+    <!-- Nav Items  -->
+    <div>
+      <ul class="navbar-nav" style="margin-right: 6vh;">
+        <li class="nav-item">
+          <a
+            [routerLink]="['/']"
+            [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link"
+            >Home</a
+          >
+        </li>
+        <li *ngIf="!isLoggedIn()" class="nav-item">
+          <a
+            [routerLink]="['/login']"
+            [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link"
+            >Login</a
+          >
+        </li>
+
+        <!-- <li *ngIf="!isLoggedIn()" class="nav-item">
+                    <a [routerLink]="['/register']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Register</a>
+                </li> -->
+        <li *ngIf="isLoggedIn()" class="nav-item">
+          <a [routerLink]="['/dashboard']" class="nav-link">Dashboard</a>
+        </li>
+        <li *ngIf="isLoggedIn()" class="nav-item" (click)="logout()">
+          <a class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

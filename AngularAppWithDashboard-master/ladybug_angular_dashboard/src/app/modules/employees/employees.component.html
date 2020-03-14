@@ -1,0 +1,32 @@
+<mat-toolbar color="dark" style="background-color:transparent;">
+    <mat-toolbar-row>
+        <span class="text-center">Employee List</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 empBg">
+        <ng-container matColumnDef="empId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-dark t-header"> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.empId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-dark t-header"> First Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-dark t-header"> Last Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="userName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-dark t-header"> User Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons id="paginationBg"></mat-paginator>
+</div>

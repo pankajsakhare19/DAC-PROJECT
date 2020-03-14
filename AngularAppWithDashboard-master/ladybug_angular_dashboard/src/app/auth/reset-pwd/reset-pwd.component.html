@@ -1,0 +1,28 @@
+<form *ngIf="pwdStatus" (ngSubmit)="resetPwd()" #form="ngForm">
+    <!-- <h3 class="mb-5">Reset Password</h3> -->
+    <div class="form-group" id="email">
+        <!-- <label>Email</label> -->
+        <input type="email" class="form-control" name="email" placeholder="Enter Email" [(ngModel)]="email" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block bg-dark">Reset</button>
+    </div>
+
+    <!-- <p *ngIf="msg">
+        Please check your email to reset your password.
+    </p> -->
+    <div *ngIf="msg" class="alert alert-danger" role="alert">
+        Unable to send Email!!
+    </div>
+</form>
+
+<ngx-spinner
+bdOpacity = 0.9
+bdColor = "#333"
+size = "large"
+color = "#ffffff"
+type = "pacman"
+[fullScreen] = "true"
+>
+<p style="color: white" > Loading... </p>
+</ngx-spinner>

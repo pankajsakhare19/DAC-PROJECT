@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+}
+
+.t-header {
+    color: antiquewhite;
+    font-size: 18px;
+}
+.empBg {
+  background-color: transparent;
+}
+#paginationBg {
+  background-color: #DEE4E7;
+  /* background-color: #eceff1; */
+  /* background-color: #ECEFF1; */
+  
+}

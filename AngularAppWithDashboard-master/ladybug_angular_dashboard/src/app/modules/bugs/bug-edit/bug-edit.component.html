@@ -1,0 +1,92 @@
+<div *ngIf="isBugEdited" class="alert alert-success" role="alert">
+        {{resMsg}}
+    </div>
+<button mat-raised-button style="background-color: transparent;" [routerLink]="['/projects/',projectId]">Back</button><br><br>
+<h4>Bug Edit</h4>
+<form (ngSubmit)="onBugEdit()" #f="ngForm">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="bugId">Bug ID</label>
+            <input type="text" class="form-control" id="bugId" name="bugId" [(ngModel)]="bug.bugId" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="bugName">Bug Name</label>
+            <input type="text" class="form-control" id="bugName" name="bugName" [(ngModel)]="bug.bugName" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="bugDesc">Bug Description</label>
+        <textarea class="form-control" id="bugDesc" name="bugDesc" rows="3" [(ngModel)]="bug.bugDesc"
+            readonly></textarea>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <div *ngIf="!isBugIssuer && (isStatusChanger || isBugAssigner)" class="form-group">
+                <label for="status">Bug Status</label>
+                <select id="status" class="form-control" name="status" [(ngModel)]="bug.bugStatus">
+                    <option *ngFor="let status of statusArray" [value]="status"> {{status}} </option>
+                </select>
+				<span class="help-block" *ngIf="bug.bugStatus=='NEW'">This is required!</span>
+            </div>
+        
+            <div *ngIf="isNone || isBugIssuer" class="form-group">
+                <label for="bStatus">Bug Status</label>
+                <input type="text" class="form-control" id="bStatus" name="bStatus" [(ngModel)]="bug.bugStatus" readonly>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="mgrName">Manager</label>
+            <input type="text" class="form-control" id="mgrName" name="mgrName" [(ngModel)]="bug.bugMgrId" readonly>
+        </div>
+      </div>
+
+    <div class="form-group">
+        <label for="empName">Bug Issuer</label>
+        <input type="text" class="form-control" id="empName" name="empName" [(ngModel)]="empName" readonly>
+    </div>
+
+    <div *ngIf="isBugAssigner" class="form-group">
+        <label for="bugAssignee">Assign Bug To</label>
+        <select id="bugAssignee" class="form-control" name="bugAssignee" ngModel required #bugAssign="ngModel">
+            <option *ngFor="let emp of projEmployees" [value]="emp.empId"> {{emp.firstName | uppercase}}
+                {{emp.lastName | uppercase}} ( {{emp.empId}} ) </option>
+        </select>
+        <span class="help-block" *ngIf="!bugAssign.valid && bugAssign.touched">This is required!</span>
+    </div>
+
+    <div *ngIf="bug.bugStatus!='NEW' && (!isBugAssigner && (isStatusChanger || !isNone) )" class="form-group">
+        <label for="assignee">Bug Assigned To</label>
+        <input type="text" class="form-control" id="assignee" name="bugAssignee" [(ngModel)]="assignee" readonly>
+    </div>
+
+    <!-- <div *ngIf="isNone && bug.bugStatus!='NEW'" class="form-group">
+        <label for="assignee">Bug Assigned To</label>
+        <input type="text" class="form-control" id="assignee" name="assignee" [(ngModel)]="bug.assignee" readonly>
+    </div> -->
+
+    <div *ngIf="isBugIssuer" class="form-group">
+        <label for="bugPriority">Bug Priority</label>
+        <select id="bugPriority" class="form-control" name="bugPriority" [(ngModel)]="bug.bugPriority" required
+            #bugPrior="ngModel">
+            <option value="HIGHEST">Highest</option>
+            <option value="HIGH">High</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="LOW">Low</option>
+            <option value="LOWEST">Lowest</option>
+        </select>
+        <span class="help-block" *ngIf="!bugPrior.valid && bugPrior.touched">This is required!</span>
+    </div>
+
+    <div *ngIf="!isBugIssuer" class="form-group">
+        <label for="bugPrior">Bug Priority</label>
+        <input type="text" class="form-control" id="bugPrior" name="bugPriority" [(ngModel)]="bug.bugPriority" readonly>
+    </div>
+
+    <div *ngIf="!isNone">
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid || bug.bugStatus=='NEW'" [disabled]="!isBugAssigner && !f.valid">Save</button>
+    </div>
+
+</form>

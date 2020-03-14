@@ -1,0 +1,76 @@
+<div class="container">
+  <div *ngIf="isProjectAdded" class="alert alert-success" role="alert">
+    {{ resMsg }}
+  </div>
+
+  <div *ngIf="isProjectNotAdded" class="alert alert-success" role="alert">
+    {{ resMsg }}
+  </div>
+  <div class="row">
+    <div class="col col-md-6 col-center mx-auto">
+      <div class="container mb-5 mt-3" style="text-align: center;">
+        <h4>Add Project</h4>
+      </div>
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="form-group">
+          <div class="form-group">
+            <label>Project Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="projectName"
+              ngModel
+              required
+              #projectNm="ngModel"
+            />
+            <span
+              class="help-block"
+              *ngIf="!projectNm.valid && projectNm.touched"
+              >This is required!</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="bugDesc">Project Description</label>
+            <textarea
+              class="form-control"
+              id="bugDesc"
+              name="projectDesc"
+              rows="3"
+              ngModel
+              required
+              #projectD="ngModel"
+            ></textarea>
+            <span class="help-block" *ngIf="!projectD.valid && projectD.touched"
+              >This is required!</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label>Project Manager</label>
+            <select
+              class="custom-select form-control"
+              name="mgrId"
+              ngModel
+              required
+              #projectM="ngModel"
+            >
+              <option *ngFor="let mgr of manager" [value]="mgr.empId">
+                {{ mgr.firstName }}
+              </option>
+            </select>
+            <span class="help-block" *ngIf="!projectM.valid && projectM.touched"
+              >This is required!</span
+            >
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+              Add Project
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

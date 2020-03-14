@@ -1,0 +1,23 @@
+
+<div *ngIf="emailSent" class="alert alert-success" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+    <strong>Success!</strong>
+    <p> Password Reset Link Sent to the mail!</p>
+</div>
+<!-- <h6 class="card-title text-center display-4">SIGN IN</h6> -->
+<form (ngSubmit)="checkLogin()" #form="ngForm" class="mt-5">
+    <div class="form-group" style="margin-bottom: 2vh;" id="email">
+        <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="email" />
+    </div>
+    <div class="form-group" id="pwd">
+        <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password" />
+        <p *ngIf="invalidLogin" class="red">
+            Wrong password. Please try again.
+        </p>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block bg-dark">Login</button>
+    </div>
+</form>
+<a [routerLink]="['/login/resetPwd']" routerLinkActive="router-link-active" class="nav-item" style="color:black">Forgot Password?</a>

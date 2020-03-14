@@ -1,0 +1,46 @@
+
+<mat-nav-list>
+    <!-- <div class="profile-card"> 
+        <div class="header">
+            <h4>Welcome</h4>
+            <h5>{{userName | uppercase}}</h5>
+        </div>
+    </div> -->
+    <div class="card card-profile ml-auto mr-auto" style="max-width: 360px; background-color: transparent;">
+        <div class="card-header card-header-image" style="background-color: transparent;">
+            <div class="row">
+                <div class="col-5">
+                    <a href="#">
+                        <img class="img" src="../../../../assets/default-avatar-png-2-original.png">
+                    </a>
+                </div>
+                <div class="col-7">
+                    <h4 class="card-title mt-3">{{userName | uppercase}}</h4>
+                    <h6 class="card-category text-gray">{{ getUserRole() }}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <h2 matSubheader>Pages</h2> -->
+
+    <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard" class="list-group-item active"><i class="fa fa-key"></i> <span>Dashboard</span></a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/projects" class="list-group-item"><i class="fa fa-credit-card"></i> <span>Projects</span></a>
+    <a href="#" class="list-group-item"><i class="material-icons">dashboard</i><span>Support</span></a> -->
+
+    <a mat-list-item routerLinkActive="list-item-active active" routerLink="/dashboard"> <i mat-list-item class="material-icons">dashboard</i> Dashboard</a>
+
+    <a mat-list-item routerLinkActive="list-item-active active" routerLink="/employees"><i class="material-icons">people_alt</i>Employees</a>
+
+    <a mat-list-item routerLinkActive="list-item-active active" routerLink="/projects"><i class="material-icons">computer</i>Projects</a>
+    <div *ngIf="isAdmin()">
+    <a mat-list-item routerLinkActive="list-item-active active" routerLink="/register"><i class="material-icons">person_add</i>Register</a>
+    </div>
+    <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/assignBug">Assigning bug</a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/articles">Articles</a> -->
+
+    <!-- <mat-divider></mat-divider> -->
+
+</mat-nav-list>

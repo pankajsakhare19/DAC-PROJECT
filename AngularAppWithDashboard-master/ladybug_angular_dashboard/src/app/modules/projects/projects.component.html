@@ -1,0 +1,18 @@
+
+<div *ngIf="isAdmin">
+<button mat-raised-button routerLink='/projects/addProject' class="addProjectBg">Add Project</button>
+
+</div>
+<div class="row">
+    <div *ngFor="let project of projArr" class="col-sm-6 mt-4">
+        <mat-card class="projectBg">
+            <mat-card-header>
+                <mat-card-title> {{project.projectName | uppercase}} - {{project.projectId}} </mat-card-title>
+                <mat-card-subtitle>{{project.projectDesc}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+                <button mat-raised-button [routerLink]="['/projects',project.projectId]" mat-button class="viewBg">View</button>
+            </mat-card-actions>
+        </mat-card>
+    <!-- </div> -->
+</div>

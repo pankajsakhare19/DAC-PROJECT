@@ -1,0 +1,45 @@
+<div *ngIf="isBugAdded" class="alert alert-success" role="alert">
+    {{resMsg}}
+</div>
+
+<div *ngIf="isBugNotAdded" class="alert alert-success" role="alert">
+    {{resMsg}}
+</div>
+<button mat-raised-button color="primary" [routerLink]="['/projects/',projectId]" >Back</button><br><br>
+<form (ngSubmit)="onBugAdd()" #f="ngForm">
+    <div class="form-group">
+        <label for="bugName">Bug Name</label>
+        <input type="text" class="form-control" id="bugName" name="bugName" placeholder="Name" ngModel required #bugNm="ngModel">
+        <span class="help-block" *ngIf="!bugNm.valid && bugNm.touched">This is required!</span>
+    </div>
+    <div class="form-group">
+        <label for="bugDesc">Bug Description</label>
+        <textarea class="form-control" id="bugDesc" name="bugDesc" rows="3" ngModel required #bugD="ngModel"></textarea>
+        <span class="help-block" *ngIf="!bugD.valid && bugD.touched">This is required!</span>
+    </div>
+    <div class="form-group">
+        <label for="bugStatus">Status</label>
+        <input type="text" class="form-control" id="bugStatus" name="bugStatus" value="NEW" readonly>
+    </div>
+    <div class="form-group">
+        <label for="mgrName">Manager</label>
+        <input type="text" class="form-control" id="mgrName" name="mgrName" [placeholder]="mgrName | uppercase" readonly>
+    </div>
+    <div class="form-group">
+        <label for="empName">Bug Issuer</label>
+        <input type="text" class="form-control" id="empName" name="empName" [placeholder]="empName | uppercase" readonly>
+    </div>
+
+    <div class="form-group">
+        <label for="bugPriority">Bug Priority</label>
+        <select id="bugPriority" class="form-control" name="bugPriority" [ngModel]="'MEDIUM'" required #bugPrior="ngModel">
+            <option value="HIGHEST">Highest</option>
+            <option value="HIGH">High</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="LOW">Low</option>
+            <option value="LOWEST">Lowest</option>
+        </select>
+        <span class="help-block" *ngIf="!bugPrior.valid && bugPrior.touched">This is required!</span>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button>
+</form>

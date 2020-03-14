@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-md-6 col-center mx-auto">
+      <div class="container mb-5 mt-3" style="text-align: center;">
+        <h3>Register</h3>
+      </div>
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="form-group">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="employee.firstName" required #firstNm="ngModel" />
+            <span class="help-block" *ngIf="!firstNm.valid && firstNm.touched">This is required!</span>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="employee.lastName" required #lastNm="ngModel" />
+            <span class="help-block" *ngIf="!lastNm.valid && lastNm.touched">This is required!</span>
+            <div class="form-group">
+              <label>UserName</label>
+              <input type="text" class="form-control" name="empUserName" [(ngModel)]="employee.userName" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="employee.login.email" required #em="ngModel" />
+            <span class="help-block" *ngIf="!em.valid && em.touched">This is required!</span>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="employee.login.password" required #pass="ngModel" />
+            <span class="help-block" *ngIf="!pass.valid && pass.touched">This is required!</span>
+          </div>
+
+          <div class="form-group">
+            <label>Role</label>
+            <!-- <select class="custom-select form-control" id="role" name="role" [(ngModel)]="employee.login.role" required> -->
+              <select class="custom-select form-control" id="role" name="role"  [(ngModel)]="employee.login.role" #rl="ngModel" #mySelect (change)='onRoleSelected(mySelect.value)' required>
+              <option value="">Select Role</option>
+              <option value="MANAGER">Manager</option>
+              <option value="DEVTEST">Developer/Tester</option>
+              <option value="SUPPORT">Support</option>
+            </select>
+            <span class="help-block" *ngIf="!rl.valid && rl.touched">This is required!</span>
+          </div>
+
+
+          <div *ngIf="employee.login.role != '' && employee.login.role != 'MANAGER'" class="form-group">
+            <label>Manager</label>
+            <select class="custom-select form-control" id="mgr" name="mgrId" [(ngModel)]="employee.empMgr.empId" #mg="ngModel" #mySelect (change)='onMgrSelected(mySelect.value)' required>
+              <!-- <option value="">Choose Manager</option> -->
+              <option *ngFor="let mgr of manager" [value]="mgr.empId">
+                {{ mgr.firstName }}
+              </option>
+            </select>
+            <span class="help-block" *ngIf="!mg.valid && mg.touched">This is required!</span>
+          </div>
+
+          <div *ngIf="employee.login.role != ''" class="form-group">
+            <label>Projects</label>
+            <ng-multiselect-dropdown 
+            [placeholder]="'Select Project(s)'" 
+            [data]="projectList"
+            [(ngModel)]="selectedItems" 
+            [settings]="dropdownSettings" 
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Register</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+}
+
+.t-header {
+    color: antiquewhite;
+    font-size: 18px;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+    padding: 0vh 5vh;
+}
+
+.projectBg{
+    background: transparent;
+}
+#paginationBg {
+    background-color: #DEE4E7;    
+  }

@@ -1,0 +1,54 @@
+.profile-card {
+    background-color:blue ;
+    text-align: center;
+    padding: 0 20px 20px 20px;
+    /* border: none !important; */
+    /* dbf1e2 */
+}
+.card-profile{
+    border: none;
+}
+.card-header{
+    background-color: #ffffff;
+    border: none !important;
+}
+
+#img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: radius 50%;
+}
+
+.mat-icon {
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.mat-list-base {
+    padding-top: 0;
+}
+
+i{
+    margin-right: 10px;
+}
+img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .card-title, .card-category{
+      text-align: center;
+  }
+
+  /* .profile{
+      display: inline;
+  } */
+
+ a.active   
+{
+    text-decoration:none;
+    color: turquoise;
+    /* border: whitesmoke; */
+    
+}
