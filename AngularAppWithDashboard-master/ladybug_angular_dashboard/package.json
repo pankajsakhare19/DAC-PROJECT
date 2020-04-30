@@ -24,7 +24,7 @@
         "angular-crumbs": "^3.0.1",
         "bootstrap": "^4.4.1",
         "hammerjs": "^2.0.8",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "ng-multiselect-dropdown": "^0.2.10",
         "ng8-breadcrumb": "^1.0.5",
         "ngx-spinner": "^8.1.0",
